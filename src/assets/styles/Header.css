@@ -1,0 +1,66 @@
+/* Reset some default styles for better presentation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container for the navigation */
+nav {
+  background-color: rgba(128, 128, 128, 0.27); /* Dark background */
+  color: #fff; /* White text */
+  padding: 1rem;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none; /* Remove default bullet points */
+  justify-content: space-around; /* Space out the nav links */
+  padding: 0;
+}
+.menu-toggle {
+  display: none;
+}
+
+nav li {
+  margin: 0 1rem; /* Add some space between nav items */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem; /* Increase font size for better readability */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+nav a:hover {
+  color: #00bcd4; /* Change color on hover */
+  transform: scale(1.1); /* Scale effect */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Center the items */
+    transition: max-height 0.3s ease; /* Animation for dropdown */
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  nav li {
+    margin-bottom: 1rem; /* Add margin between list items */
+  }
+
+  nav ul.open {
+    max-height: 200px; /* Expand height when menu is open */
+  }
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    margin: 1rem;
+  }
+}

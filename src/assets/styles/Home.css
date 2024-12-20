@@ -1,0 +1,131 @@
+/* Reset some default styles for better presentation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-bottom: 1rem;
+}
+
+/* Container for Home component */
+div {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Loader animation */
+.loader {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #00bcd4;
+}
+
+.error {
+  text-align: center;
+  font-size: 1.5rem;
+  color: red;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f3181825;
+  border-radius: 4px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+li:hover {
+  transform: translate(20px, 12px);
+
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  color: #00bcd4;
+}
+
+/* Pagination buttons styling */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+button {
+  background-color: #00bcd4;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #0077b6;
+}
+
+span {
+  margin: 0 0rem;
+  font-size: 1rem;
+  color: #555;
+}
+input,
+select {
+  padding: 0.5rem;
+  border: 1px solid #00bcd4;
+  border-radius: 4px;
+  margin-right: 1rem;
+  background-color: #f4f4f4;
+  width: 46%;
+  color: #333;
+}
+
+.edit {
+  margin-left: 0.2em;
+  font-size: small;
+}
+.save {
+  margin-right: 0.5em;
+}
+
+@media (max-width: 768px) {
+  div {
+    padding: 1rem;
+  }
+
+  input,
+  select {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
