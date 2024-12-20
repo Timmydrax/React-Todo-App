@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
@@ -39,7 +38,7 @@ function App() {
   }, []);
 
   // Save todos to local storage whenever they change
-  React.useEffect(() => {
+  useEffect(() => {
     if (todos.length) {
       localStorage.setItem("todos", JSON.stringify(todos));
     }

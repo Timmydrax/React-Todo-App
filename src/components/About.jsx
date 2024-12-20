@@ -68,7 +68,7 @@ function About({
           <div>
             <h3>{todo.title}</h3>
             <p>Status: {todo.completed ? "Completed" : "Pending"}</p>
-            <p>User ID: {todo.userId === 1 ? "Okonji Emeka" : "Anonymous"}</p>
+            <p>User ID: {todo.userId === 1 ? "Timmy Drax" : "Anonymous"}</p>
           </div>
           <NavLink to="/">
             <button>Go back to home</button>
@@ -87,7 +87,7 @@ function About({
                   <li key={todo.id}>
                     <h3>{todo.title}</h3>
                     <p>Status: {todo.completed ? "Completed" : "Pending"}</p>
-                    User ID: {todo.userId === 1 ? "Okonji Emeka" : "Anonymous"}
+                    User ID: {todo.userId === 1 ? "Timmy Drax" : "Anonymous"}
                   </li>
                 ))}
               </ul>
