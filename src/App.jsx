@@ -1,17 +1,13 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
-// import Navigation from "./components/Navigation";
 import Header from "./components/Header.jsx";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import ErrorBoundaries from "./components/ErrorBoundaries.jsx";
-// import ErrorComponent from "./components/ErrorComponent";
-// import "../src/CSS/Navigation.css";
 import CustomError from "./components/CustomError.jsx";
 import { ClipLoader } from "react-spinners";
-// import { ClipLoader } from "react-spinners";
 
 function App() {
   const [page, setPage] = useState(1); // Current page for pagination
@@ -25,7 +21,7 @@ function App() {
   // Load todos from local storage on initial render
   useEffect(() => {
     let isMounted = true;
-    isMounted
+    isMounted;
     const savedTodos = localStorage.getItem("todos");
     if (savedTodos) {
       setTodos(JSON.parse(savedTodos));
