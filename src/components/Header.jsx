@@ -10,7 +10,7 @@ const Header = () => {
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
         </button>
-        <h1 style={{color: "white"}}>Todo App</h1>
+        <h1 style={{ color: "white" }}>Todo App</h1>
         <ul className={menuOpen ? "open" : ""}>
           <li>
             <Link to="/">Home</Link>

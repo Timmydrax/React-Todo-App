@@ -135,149 +135,155 @@ function Home({
   };
 
   return (
-    <div>
-      <h1>Todo List</h1>
+    <>
+      <div className="home-container">
+        <h1>Todo List</h1>
 
-      <button style={{ marginBottom: "1em" }} onClick={() => setCurrentPage(1)}>
-        Refresh
-      </button>
-
-      <form onSubmit={addTodo}>
-        <input
-          type="text"
-          placeholder="Enter new todo"
-          value={newTodoTitle}
-          onChange={(e) => setNewTodoTitle(e.target.value)}
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-
-      <div>
-        <input
-          type="text"
-          placeholder="Search Todos"
-          value={search}
-          onChange={handleSearch}
-        />
-        <select
-          onChange={(e) => sortedTodos(e.target.value)}
-          style={{ color: "grey" }}
+        {/* <button
+          style={{ marginBottom: "1em" }}
+          onClick={() => setCurrentPage(1)}
         >
-          <option value="" hidden>
-            Sort Todos
-          </option>
-          <option value="all">All</option>
-          <option value="completed">Completed</option>
-          <option value="pending">Pending</option>
-          <option value="asc">A-Z</option>
-          <option value="desc">Z-A</option>
-        </select>
-      </div>
-      {currentTodos.length > 0 && !loading && !error && (
-        <ul>
-          {currentTodos.map((todo) => (
-            <li key={todo.id}>
-              {editingTodo === todo.id ? (
-                // Editing Mode
-                <div>
-                  <input
-                    type="text"
-                    value={updatedTitle}
-                    onChange={(e) => setUpdatedTitle(e.target.value)}
-                  />
-                  <select
-                    value={updatedStatus}
-                    onChange={(e) => setUpdatedStatus(e.target.value)}
-                  >
-                    <option value={true}>Completed</option>
-                    <option value={false}>Pending</option>
-                  </select>
+          Refresh
+        </button> */}
 
-                  <button className="save" onClick={() => saveTodo(todo.id)}>
-                    Save
-                  </button>
-                  <button onClick={cancelEditing}>Cancel</button>
-                </div>
-              ) : (
-                // View Mode
-                <div>
-                  <h3>{todo.title}</h3>
+        <form onSubmit={addTodo}>
+          <input
+            type="text"
+            placeholder="Enter new todo"
+            value={newTodoTitle}
+            onChange={(e) => setNewTodoTitle(e.target.value)}
+          />
+          <button type="submit" className="add-todo">Add New Todo</button>
+        </form>
 
-                  <button className="edit" onClick={() => startEditing(todo)}>
-                    Edit
-                  </button>
-                  <Link to="/about" state={{ todo }}>
-                    <button className="edit">View Details</button>
-                  </Link>
-                  <button
-                    style={{
-                      backgroundColor: "red",
-                      marginLeft: "0.2em",
-                      fontSize: "small",
-                      marginTop: "0.2em",
-                    }}
-                    onClick={() =>
-                      setTodos(todos.filter((t) => t.id !== todo.id))
-                    }
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {!loading && currentTodos.length === 0 && (
-        <h2>No Todos Found for {search}</h2>
-      )}
-
-      {/* Pagination Controls */}
-      {!loading && totalPages > 1 && (
-        <div className="pagination">
-          <button
-            onClick={() => setCurrentPage(1)}
-            disabled={currentPage === 1}
+        <div className="sort-todo">
+          <input
+            type="text"
+            placeholder="Search Todos"
+            value={search}
+            onChange={handleSearch}
+          />
+          <select
+            onChange={(e) => sortedTodos(e.target.value)}
+            style={{ color: "grey" }}
           >
-            &lt;&lt;
-          </button>
-          <button
-            onClick={() => setCurrentPage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            &lt;
-          </button>
-          {paginationNumbers.map((number, index) =>
-            number === "..." ? (
-              <span key={index} className="ellipsis">
-                ...
-              </span>
-            ) : (
-              <button
-                key={index}
-                onClick={() => setCurrentPage(number)}
-                className={currentPage === number ? "active" : ""}
-              >
-                {number}
-              </button>
-            )
-          )}
-          <button
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={currentPage === totalPages}
-          >
-            &gt;
-          </button>
-          <button
-            onClick={() => setCurrentPage(totalPages)}
-            disabled={currentPage === totalPages}
-          >
-            &gt;&gt;
-          </button>
+            <option value="" hidden>
+              Sort Todos
+            </option>
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="pending">Pending</option>
+            <option value="asc">A-Z</option>
+            <option value="desc">Z-A</option>
+          </select>
         </div>
-      )}
-    </div>
+        
+        {currentTodos.length > 0 && !loading && !error && (
+          <ul>
+            {currentTodos.map((todo) => (
+              <li key={todo.id}>
+                {editingTodo === todo.id ? (
+                  // Editing Mode
+                  <div>
+                    <input
+                      type="text"
+                      value={updatedTitle}
+                      onChange={(e) => setUpdatedTitle(e.target.value)}
+                    />
+                    <select
+                      value={updatedStatus}
+                      onChange={(e) => setUpdatedStatus(e.target.value)}
+                    >
+                      <option value={true}>Completed</option>
+                      <option value={false}>Pending</option>
+                    </select>
+
+                    <button className="save" onClick={() => saveTodo(todo.id)}>
+                      Save
+                    </button>
+                    <button onClick={cancelEditing}>Cancel</button>
+                  </div>
+                ) : (
+                  // View Mode
+                  <div>
+                    <h3>{todo.title}</h3>
+
+                    <button className="edit" onClick={() => startEditing(todo)}>
+                      Edit
+                    </button>
+                    <Link to="/about" state={{ todo }}>
+                      <button className="edit">View Details</button>
+                    </Link>
+                    <button
+                      style={{
+                        backgroundColor: "red",
+                        marginLeft: "0.2em",
+                        fontSize: "small",
+                        marginTop: "0.2em",
+                      }}
+                      onClick={() =>
+                        setTodos(todos.filter((t) => t.id !== todo.id))
+                      }
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {!loading && currentTodos.length === 0 && (
+          <h2>No Todos Found for {search}</h2>
+        )}
+
+        {/* Pagination Controls */}
+        {!loading && totalPages > 1 && (
+          <div className="pagination">
+            <button
+              onClick={() => setCurrentPage(1)}
+              disabled={currentPage === 1}
+            >
+              &lt;&lt;
+            </button>
+            <button
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              &lt;
+            </button>
+            {paginationNumbers.map((number, index) =>
+              number === "..." ? (
+                <span key={index} className="ellipsis">
+                  ...
+                </span>
+              ) : (
+                <button
+                  key={index}
+                  onClick={() => setCurrentPage(number)}
+                  className={currentPage === number ? "active" : ""}
+                >
+                  {number}
+                </button>
+              )
+            )}
+            <button
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              &gt;
+            </button>
+            <button
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+            >
+              &gt;&gt;
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 

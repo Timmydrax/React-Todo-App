@@ -22,14 +22,57 @@ p {
 }
 
 /* Container for Home component */
+
 div {
-  /* max-width: 1280px; */
-  width: 100%;
+  /* width: 100%;
   margin: 2rem auto;
   padding: 2rem;
   background-color: #fff;
+  border: 1px solid steelblue;
+  border-radius: 8px; */
+}
+
+/* Home Container */
+.home-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  > h1 {
+    text-align: center;
+    margin-block-end: 2rem;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: 2rem;
+}
+
+/* Add Todo button */
+.add-todo {
+  background-color: steelblue;
+  color: white;
+  border: none;
+  padding: 0.9rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  outline: none;
+}
+
+/* sort Todo */
+.sort-todo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: 2rem;
 }
 
 /* Loader animation */
@@ -58,12 +101,6 @@ li {
   border-radius: 4px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
-/* li:hover {
-  transform: translate(20px, 12px);
-
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-} */
 
 a {
   text-decoration: none;
@@ -105,12 +142,14 @@ span {
 input,
 select {
   padding: 0.5rem;
-  border: 1px solid #00bcd4;
+  border: 1px solid steelblue;
   border-radius: 4px;
   margin-right: 1rem;
   background-color: #f4f4f4;
   width: 46%;
   color: #333;
+  padding: 15px;
+  height: 48px;
 }
 
 .edit {
