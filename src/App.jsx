@@ -125,13 +125,8 @@ function App() {
           }
         />
         <Route path="/error" element={<ErrorBoundaries />} />
-        <Route path="*" element={<CustomError />} />
+        <Route path="/custom-error" element={<CustomError />} />
       </Routes>
-      <div>
-        <footer>
-          <p>&copy; 2024 Todoist Explorer. All rights reserved.</p>
-        </footer>
-      </div>
     </>
   );
 }

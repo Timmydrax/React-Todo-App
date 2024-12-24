@@ -1,16 +1,17 @@
 /* Reset some default styles for better presentation */
-* {
+*,
+*::before,
+*::after {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Arial", sans-serif;
-  background-color: #f4f4f4;
+  font-family: "Montserrat", Arial, sans-serif;
+  background-color: #fff;
   color: #333;
-  display: flex;
-  padding: 0;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -22,7 +23,8 @@ p {
 
 /* Container for Home component */
 div {
-  max-width: 800px;
+  /* max-width: 1280px; */
+  width: 100%;
   margin: 2rem auto;
   padding: 2rem;
   background-color: #fff;
@@ -34,7 +36,7 @@ div {
 .loader {
   text-align: center;
   font-size: 1.5rem;
-  color: #00bcd4;
+  color: steelblue;
 }
 
 .error {
@@ -51,16 +53,17 @@ ul {
 li {
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: #f3181825;
+  /* background-color: #f3181825; */
+
   border-radius: 4px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-li:hover {
+/* li:hover {
   transform: translate(20px, 12px);
 
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-}
+} */
 
 a {
   text-decoration: none;
@@ -80,7 +83,7 @@ a:hover {
 }
 
 button {
-  background-color: #00bcd4;
+  background-color: steelblue;
   color: white;
   border: none;
   padding: 0.5rem 0.7rem;
@@ -98,6 +101,7 @@ span {
   font-size: 1rem;
   color: #555;
 }
+
 input,
 select {
   padding: 0.5rem;
