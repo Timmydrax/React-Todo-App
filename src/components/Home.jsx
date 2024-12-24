@@ -153,7 +153,9 @@ function Home({
             value={newTodoTitle}
             onChange={(e) => setNewTodoTitle(e.target.value)}
           />
-          <button type="submit" className="add-todo">Add New Todo</button>
+          <button type="submit" className="add-todo">
+            Add New Todo
+          </button>
         </form>
 
         <div className="sort-todo">
@@ -177,7 +179,7 @@ function Home({
             <option value="desc">Z-A</option>
           </select>
         </div>
-        
+
         {currentTodos.length > 0 && !loading && !error && (
           <ul>
             {currentTodos.map((todo) => (
@@ -205,28 +207,35 @@ function Home({
                   </div>
                 ) : (
                   // View Mode
-                  <div>
+                  <div className="view-todo">
                     <h3>{todo.title}</h3>
 
-                    <button className="edit" onClick={() => startEditing(todo)}>
-                      Edit
-                    </button>
-                    <Link to="/about" state={{ todo }}>
-                      <button className="edit">View Details</button>
-                    </Link>
-                    <button
-                      style={{
-                        backgroundColor: "red",
-                        marginLeft: "0.2em",
-                        fontSize: "small",
-                        marginTop: "0.2em",
-                      }}
-                      onClick={() =>
-                        setTodos(todos.filter((t) => t.id !== todo.id))
-                      }
-                    >
-                      Delete
-                    </button>
+                    <div className="view-todo-btn">
+                      <button
+                        className="edit"
+                        onClick={() => startEditing(todo)}
+                      >
+                        Edit
+                      </button>
+
+                      <Link to="/about" state={{ todo }}>
+                        <button className="edit">View Details</button>
+                      </Link>
+
+                      <button
+                        style={{
+                          backgroundColor: "red",
+                          marginLeft: "0.2em",
+                          fontSize: "small",
+                          marginTop: "0.2em",
+                        }}
+                        onClick={() =>
+                          setTodos(todos.filter((t) => t.id !== todo.id))
+                        }
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 )}
               </li>
@@ -241,18 +250,28 @@ function Home({
         {/* Pagination Controls */}
         {!loading && totalPages > 1 && (
           <div className="pagination">
-            <button
+            {/* <button
               onClick={() => setCurrentPage(1)}
               disabled={currentPage === 1}
             >
               &lt;&lt;
-            </button>
-            <button
+            </button> */}
+
+            {/* <button
               onClick={() => setCurrentPage(currentPage - 1)}
               disabled={currentPage === 1}
             >
               &lt;
+            </button> */}
+
+            <button
+              onClick={() => setCurrentPage(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              Previous
             </button>
+
+            {/* Pagination */}
             {paginationNumbers.map((number, index) =>
               number === "..." ? (
                 <span key={index} className="ellipsis">
@@ -268,18 +287,27 @@ function Home({
                 </button>
               )
             )}
-            <button
+
+            {/* <button
               onClick={() => setCurrentPage(currentPage + 1)}
               disabled={currentPage === totalPages}
             >
               &gt;
-            </button>
+            </button> */}
+
             <button
+              onClick={() => setCurrentPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+
+            {/* <button
               onClick={() => setCurrentPage(totalPages)}
               disabled={currentPage === totalPages}
             >
               &gt;&gt;
-            </button>
+            </button> */}
           </div>
         )}
       </div>
