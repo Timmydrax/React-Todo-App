@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", Arial, sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  margin: 0 auto;
+}
+
+.error-404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > h1 {
+    color: red;
+    -webkit-margin-after: 1rem;
+            margin-block-end: 1rem;
+  }
+
+  > p {
+    font-size: 1rem;
+    font-weight: 600;
+    -webkit-margin-after: 1rem;
+            margin-block-end: 1rem;
+  }
+}
+
+.custom-error-link {
+  color: #fff;
+  background-color: steelblue;
+  padding: 1rem 0.8rem 1rem 0.8rem;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: rgb(47, 97, 137);
+    transition: background-color 3s ease-in;
+    color: #fff;
+  }
+}

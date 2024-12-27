@@ -2,20 +2,12 @@ import { NavLink, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function About({
-  //   page,
-  //   setPage,
   todos,
-  //   setTodos,
   loading,
-  //   setLoading,
   error,
-  //   setError,
   currentPage,
   setCurrentPage,
   todosPerPage,
-  //   setTodosPerPage,
-  //   updatedStatus,
-  //   setUpdatedStatus,
 }) {
   const { state } = useLocation();
   const todo = state ? state.todo : null;
@@ -26,11 +18,11 @@ function About({
   const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
   const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
 
-  // Generate Pagination Numbers with Ellipsis
+  // Generate Pagination Numbers
   const getPaginationNumbers = () => {
     const pagination = [];
 
-    // Always show the first page
+    // Function to render first page.
     if (currentPage > 2) {
       pagination.push(1);
       if (currentPage > 3) {
@@ -38,7 +30,7 @@ function About({
       }
     }
 
-    // Add current page and its neighbors
+    // Add the current page with it's neighbors
     const startPage = Math.max(1, currentPage - 1);
     const endPage = Math.min(totalPages, currentPage + 1);
 
@@ -46,7 +38,7 @@ function About({
       pagination.push(i);
     }
 
-    // Always show the last page
+    // Render last page
     if (currentPage < totalPages - 1) {
       if (currentPage < totalPages - 2) {
         pagination.push("...");
@@ -62,13 +54,13 @@ function About({
   return (
     <div>
       {todo ? (
-        // Display Specific Todo Details
+        // Render the Todo Details..
         <>
           <h2>About TODO</h2>
           <div>
             <h3>{todo.title}</h3>
             <p>Status: {todo.completed ? "Completed" : "Pending"}</p>
-            <p>User ID: {todo.userId === 1 ? "Timmy Drax" : "Anonymous"}</p>
+            <p>User ID: {todo.userId === 1 ? "Bermuda" : "Anonymous"}</p>
           </div>
           <NavLink to="/">
             <button>Go back to home</button>
@@ -87,7 +79,7 @@ function About({
                   <li key={todo.id}>
                     <h3>{todo.title}</h3>
                     <p>Status: {todo.completed ? "Completed" : "Pending"}</p>
-                    User ID: {todo.userId === 1 ? "Timmy Drax" : "Anonymous"}
+                    User ID: {todo.userId === 1 ? "Bermuda" : "Anonymous"}
                   </li>
                 ))}
               </ul>

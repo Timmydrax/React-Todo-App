@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/styles/Home.css";
 import PropTypes from "prop-types";
+import Header from "./Header.jsx";
 
 function Home({
   todos,
@@ -137,14 +138,9 @@ function Home({
   return (
     <>
       <div className="home-container">
-        <h1>Todo List</h1>
+        <Header />
 
-        {/* <button
-          style={{ marginBottom: "1em" }}
-          onClick={() => setCurrentPage(1)}
-        >
-          Refresh
-        </button> */}
+        <h1>Todo List</h1>
 
         <form onSubmit={addTodo}>
           <input
@@ -250,20 +246,6 @@ function Home({
         {/* Pagination Controls */}
         {!loading && totalPages > 1 && (
           <div className="pagination">
-            {/* <button
-              onClick={() => setCurrentPage(1)}
-              disabled={currentPage === 1}
-            >
-              &lt;&lt;
-            </button> */}
-
-            {/* <button
-              onClick={() => setCurrentPage(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              &lt;
-            </button> */}
-
             <button
               onClick={() => setCurrentPage(currentPage - 1)}
               disabled={currentPage === 1}
@@ -288,26 +270,12 @@ function Home({
               )
             )}
 
-            {/* <button
-              onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            >
-              &gt;
-            </button> */}
-
             <button
               onClick={() => setCurrentPage(currentPage + 1)}
               disabled={currentPage === totalPages}
             >
               Next
             </button>
-
-            {/* <button
-              onClick={() => setCurrentPage(totalPages)}
-              disabled={currentPage === totalPages}
-            >
-              &gt;&gt;
-            </button> */}
           </div>
         )}
       </div>

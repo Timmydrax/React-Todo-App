@@ -16,20 +16,10 @@ body {
 
 /* Container for Home component */
 
-div {
-  /* width: 100%;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #fff;
-  border: 1px solid steelblue;
-  border-radius: 8px; */
-}
-
 /* Home Container */
 .home-container {
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   background-color: #fff;
   border-radius: 8px;
 
@@ -113,7 +103,9 @@ a:hover {
 /* Pagination buttons styling */
 .pagination {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  gap: 3rem;
+  justify-content: center;
   align-items: center;
   margin-top: 2rem;
 }

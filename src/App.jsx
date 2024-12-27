@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./components/Header.jsx";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
@@ -34,7 +33,6 @@ function App() {
       console.log("Cleanup: Component unmounted or dependency changed");
       isMounted = false;
     };
-    // Dependency on `page`
   }, []);
 
   // Save todos to local storage whenever they change
@@ -46,7 +44,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      setLoading(true); // Start loading
+      setLoading(true);
       const response = await fetch(
         `https://jsonplaceholder.typicode.com/todos`
       );
@@ -55,14 +53,14 @@ function App() {
       }
       const data = await response.json();
       {
-        setTodos(data); // Update state only if still mounted
+        setTodos(data);
         setLoading(false);
         console.log(data);
         console.log(data.length);
       }
     } catch (error) {
       {
-        setError(error.message); // Capture error if still mounted
+        setError(error.message);
         setLoading(false);
       }
     }
@@ -80,7 +78,6 @@ function App() {
   return (
     <>
       {/* <Navigation /> */}
-      <Header />
       <Routes>
         <Route
           path="/"

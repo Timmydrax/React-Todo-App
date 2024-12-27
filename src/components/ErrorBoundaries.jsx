@@ -1,36 +1,44 @@
 // import { ErrorBoundary } from "react-error-boundary";
 import { ErrorBoundary } from "react-error-boundary";
 import PropTypes from "prop-types";
+import "../assets/styles/ErrorBoundaries.css";
+import { Link } from "react-router-dom";
 
-function FallbackComponent({ error, resetErrorBoundary }) {
+function FallbackComponent({ error }) {
   return (
-    <div role="alert">
-      <h1>Something went wrong:</h1>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try Again</button>
-      {console.log(error)}
-    </div>
+    <>
+      <div className="fallback-ui">
+        <h1>Oops! Something went wrong..</h1>
+        <pre>{error.message}</pre>
+        <Link to="/" className="error-link">
+          Go Back to Homepage
+        </Link>
+        {/* {console.log(error)} */}
+      </div>
+    </>
   );
 }
 
 function BuggyComponent() {
-  // Simulate a crash
+  // Simulate an Error to test Error Boundary
   throw new Error(
-    "This is a test error! Please be patient \n while we rectify."
+    "We're sorry! This looks like a crash, could be intentional though but please be patient while we rectify."
   );
 }
 
 function ErrorBoundaries() {
   return (
-    <ErrorBoundary
-      FallbackComponent={FallbackComponent}
-      onReset={() => {
-        // Reset any state or perform any cleanup
-        console.log("Resetting...");
-      }}
-    >
-      <BuggyComponent />
-    </ErrorBoundary>
+    <>
+      <ErrorBoundary
+        FallbackComponent={FallbackComponent}
+        onReset={() => {
+          // Reset any state or retry logic
+          console.log("Error boundary reset...");
+        }}
+      >
+        <BuggyComponent />
+      </ErrorBoundary>
+    </>
   );
 }
 
