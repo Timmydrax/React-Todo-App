@@ -1,5 +1,6 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
+import "../assets/styles/About.css";
 
 function About({
   todos,
@@ -52,19 +53,19 @@ function About({
   const paginationNumbers = getPaginationNumbers();
 
   return (
-    <div>
+    <div className="about">
       {todo ? (
         // Render the Todo Details..
         <>
-          <h2>About TODO</h2>
-          <div>
+          <h1>Todo Details</h1>
+          <div className="inner-about">
             <h3>{todo.title}</h3>
             <p>Status: {todo.completed ? "Completed" : "Pending"}</p>
             <p>User ID: {todo.userId === 1 ? "Bermuda" : "Anonymous"}</p>
           </div>
-          <NavLink to="/">
-            <button>Go back to home</button>
-          </NavLink>
+          <Link to="/" className="about-btn">
+            Go Back to Home
+          </Link>
         </>
       ) : (
         // Display Paginated Todos

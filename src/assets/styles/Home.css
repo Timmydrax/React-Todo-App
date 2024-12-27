@@ -25,6 +25,7 @@ body {
 
   > h1 {
     text-align: center;
+    -webkit-margin-after: 2rem;
     margin-block-end: 2rem;
   }
 }
@@ -34,6 +35,7 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  -webkit-margin-after: 2rem;
   margin-block-end: 2rem;
 }
 
@@ -55,6 +57,7 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  -webkit-margin-after: 2rem;
   margin-block-end: 2rem;
 }
 
@@ -77,6 +80,7 @@ ul {
 }
 
 li {
+  -webkit-margin-after: 1rem;
   margin-block-end: 1rem;
   padding: 1rem;
   border: 1px solid steelblue;
@@ -161,5 +165,13 @@ select {
     width: 100%;
     margin-right: 0;
     margin-bottom: 1rem;
+  }
+}
+
+.editing-mode {
+  > input,
+  select {
+    -webkit-margin-after: 0.5rem;
+    margin-block-end: 0.5rem;
   }
 }

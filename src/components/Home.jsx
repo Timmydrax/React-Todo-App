@@ -179,13 +179,19 @@ function Home({
         {currentTodos.length > 0 && !loading && !error && (
           <ul>
             {currentTodos.map((todo) => (
-              <li key={todo.id}>
+              <li
+                key={todo.id}
+                style={{
+                  textDecoration: todo.completed ? "line-through" : "none",
+                }}
+              >
                 {editingTodo === todo.id ? (
                   // Editing Mode
-                  <div>
+                  <div className="editing-mode">
                     <input
                       type="text"
                       value={updatedTitle}
+                      checked={todo.completed}
                       onChange={(e) => setUpdatedTitle(e.target.value)}
                     />
                     <select
