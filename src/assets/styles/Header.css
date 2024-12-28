@@ -51,31 +51,27 @@ nav li {
 nav a {
   color: white;
   text-decoration: none;
-  font-size: 1.2rem; /* Increase font size for better readability */
-  transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav a:hover {
-  color: #fff; /* Change color on hover */
-  transform: scale(1.1); /* Scale effect */
+  color: #fff;
+  transform: scale(1.1);
 }
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
   nav ul {
-    flex-direction: column; /* Stack items vertically on small screens */
-    align-items: center; /* Center the items */
-    transition: max-height 0.3s ease; /* Animation for dropdown */
+    flex-direction: column;
+    align-items: center;
+    transition: max-height 0.3s ease;
     max-height: 0;
     overflow: hidden;
   }
 
-  nav li {
-    margin-bottom: 1rem; /* Add margin between list items */
-  }
-
   nav ul.open {
-    max-height: 200px; /* Expand height when menu is open */
+    max-height: 200px; 
   }
 
   .menu-toggle {

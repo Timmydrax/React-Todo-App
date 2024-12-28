@@ -23,13 +23,14 @@ body {
   > h1 {
     color: steelblue;
     -webkit-margin-after: 1rem;
-            margin-block-end: 1rem;
+    margin-block-end: 1rem;
   }
 
   > pre {
     font-size: 1rem;
     -webkit-margin-after: 1rem;
-            margin-block-end: 1rem;
+    margin-block-end: 1rem;
+    white-space: pre-wrap;
   }
 }
 

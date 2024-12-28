@@ -7,9 +7,6 @@ const Header = () => {
   return (
     <>
       <nav>
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
-        </button>
         <h1 style={{ color: "white" }}>Todo App</h1>
         <ul className={menuOpen ? "open" : ""}>
           <li>
@@ -24,6 +21,10 @@ const Header = () => {
             <Link to="/custom-error">Custom 404</Link>
           </li>
         </ul>
+
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
       </nav>
     </>
   );

@@ -101,7 +101,7 @@ a {
 }
 
 a:hover {
-  color: #00bcd4;
+  color: steelblue;
 }
 
 /* Pagination buttons styling */
@@ -148,24 +148,11 @@ select {
 }
 
 .edit {
-  margin-left: 0.2em;
+  margin-inline-end: 0.5em;
   font-size: small;
 }
 .save {
   margin-right: 0.5em;
-}
-
-@media (max-width: 768px) {
-  div {
-    padding: 1rem;
-  }
-
-  input,
-  select {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
 }
 
 .editing-mode {
@@ -173,5 +160,42 @@ select {
   select {
     -webkit-margin-after: 0.5rem;
     margin-block-end: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-block-end: 1.5rem;
+
+    > input {
+      margin-block-end: 0px;
+      width: 60%;
+    }
+  }
+
+  .sort-todo {
+    gap: 2rem;
+    margin-block-end: 1.5rem;
+  }
+
+  input,
+  select {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .view-todo {
+    > a {
+      max-width: 70%;
+      > h3 {
+        font-size: 1rem;
+        max-width: 100%;
+      }
+    }
   }
 }

@@ -208,9 +208,12 @@ function Home({
                     <button onClick={cancelEditing}>Cancel</button>
                   </div>
                 ) : (
-                  // View Mode
+                  
+                  // Display Todo
                   <div className="view-todo">
-                    <h3>{todo.title}</h3>
+                    <Link to="/about" state={{ todo }}>
+                      <h3>{todo.title}</h3>
+                    </Link>
 
                     <div className="view-todo-btn">
                       <button
@@ -219,10 +222,6 @@ function Home({
                       >
                         Edit
                       </button>
-
-                      <Link to="/about" state={{ todo }}>
-                        <button className="edit">View Details</button>
-                      </Link>
 
                       <button
                         style={{
