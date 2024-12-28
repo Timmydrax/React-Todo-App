@@ -137,10 +137,8 @@ function Home({
               Sort Todos
             </option>
             <option value="all">All</option>
-            <option value="completed">Completed</option>
             <option value="pending">Pending</option>
-            <option value="asc">A-Z</option>
-            <option value="desc">Z-A</option>
+            <option value="completed">Completed</option>
           </select>
         </div>
 
