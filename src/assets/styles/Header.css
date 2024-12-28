@@ -71,7 +71,7 @@ nav a:hover {
   }
 
   nav ul.open {
-    max-height: 200px; 
+    max-height: 200px;
   }
 
   .menu-toggle {
@@ -79,5 +79,28 @@ nav a:hover {
     cursor: pointer;
     text-align: center;
     margin: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    > h1 {
+      font-size: 2rem;
+      padding: 0.5rem;
+      margin: 0;
+    }
+  }
+
+  nav ul {
+    text-align: center;
+
+    > li {
+      padding: 0.5rem 0.5rem;
+      margin: 0;
+    }
+  }
+
+  nav a {
+    font-size: 0.8rem;
   }
 }

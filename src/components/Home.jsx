@@ -54,38 +54,6 @@ function Home({
 
   const totalPages = Math.ceil(filteredTodos.length / todosPerPage);
 
-  const getPaginationNumbers = () => {
-    const pagination = [];
-
-    // Always show the first page
-    if (currentPage > 2) {
-      pagination.push(1);
-      if (currentPage > 3) {
-        pagination.push("...");
-      }
-    }
-
-    // Add current page and its neighbors
-    const startPage = Math.max(1, currentPage - 1);
-    const endPage = Math.min(totalPages, currentPage + 1);
-
-    for (let i = startPage; i <= endPage; i++) {
-      pagination.push(i);
-    }
-
-    // Always show the last page
-    if (currentPage < totalPages - 1) {
-      if (currentPage < totalPages - 2) {
-        pagination.push("...");
-      }
-      pagination.push(totalPages);
-    }
-
-    return pagination;
-  };
-
-  const paginationNumbers = getPaginationNumbers();
-
   // Handle Edit Start
   const startEditing = (todo) => {
     setEditingTodo(todo.id);
@@ -208,7 +176,6 @@ function Home({
                     <button onClick={cancelEditing}>Cancel</button>
                   </div>
                 ) : (
-                  
                   // Display Todo
                   <div className="view-todo">
                     <Link to="/about" state={{ todo }}>
@@ -257,23 +224,6 @@ function Home({
             >
               Previous
             </button>
-
-            {/* Pagination */}
-            {paginationNumbers.map((number, index) =>
-              number === "..." ? (
-                <span key={index} className="ellipsis">
-                  ...
-                </span>
-              ) : (
-                <button
-                  key={index}
-                  onClick={() => setCurrentPage(number)}
-                  className={currentPage === number ? "active" : ""}
-                >
-                  {number}
-                </button>
-              )
-            )}
 
             <button
               onClick={() => setCurrentPage(currentPage + 1)}

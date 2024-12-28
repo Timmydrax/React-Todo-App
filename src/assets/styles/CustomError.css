@@ -22,14 +22,14 @@ body {
   > h1 {
     color: red;
     -webkit-margin-after: 1rem;
-            margin-block-end: 1rem;
+    margin-block-end: 1rem;
   }
 
   > p {
     font-size: 1rem;
     font-weight: 600;
     -webkit-margin-after: 1rem;
-            margin-block-end: 1rem;
+    margin-block-end: 1rem;
   }
 }
 
@@ -43,5 +43,15 @@ body {
     background-color: rgb(47, 97, 137);
     transition: background-color 3s ease-in;
     color: #fff;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-404 {
+    text-align: center;
+
+    > h1 {
+      font-size: 2rem;
+    }
   }
 }

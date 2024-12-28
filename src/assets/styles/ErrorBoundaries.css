@@ -46,3 +46,13 @@ body {
     color: #fff;
   }
 }
+
+@media (max-width: 480px) {
+  .fallback-ui {
+    text-align: center;
+
+    > h1 {
+      font-size: 2rem;
+    }
+  }
+}
