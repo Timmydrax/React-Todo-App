@@ -213,7 +213,7 @@ function Home({
           <h2>No Todos Found for {search}</h2>
         )}
 
-        {/* Pagination Controls */}
+        {/* Pagination */}
         {!loading && totalPages > 1 && (
           <div className="pagination">
             <button
