@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home.jsx";
-import About from "./components/About.jsx";
-import ErrorBoundaries from "./components/ErrorBoundaries.jsx";
-import CustomError from "./components/CustomError.jsx";
+// Aggregating Components...
+import { Home, About, ErrorBoundaries, CustomError } from "./components";
 import { ClipLoader } from "react-spinners";
 
 function App() {
@@ -123,6 +121,8 @@ function App() {
         />
         <Route path="/error" element={<ErrorBoundaries />} />
         <Route path="/custom-error" element={<CustomError />} />
+        {/* Wild Card Route */}
+        <Route path="*" element={<CustomError />} />
       </Routes>
     </>
   );
