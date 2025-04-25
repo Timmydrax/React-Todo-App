@@ -5,19 +5,26 @@ import { Routes, Route } from "react-router-dom";
 import { Home, About, ErrorBoundaries, CustomError } from "./components";
 import { ClipLoader } from "react-spinners";
 
+// Define the type for the Todo item
+interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
 function App() {
-  const [page, setPage] = useState(1); // Current page for pagination
-  const [todos, setTodos] = useState([]); // Store fetched todos
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [todosPerPage, setTodosPerPage] = useState(10);
-  const [updatedStatus, setUpdatedStatus] = useState("");
+  const [page, setPage] = useState<number>(1); // Current page for pagination
+  const [todos, setTodos] = useState<Todo[]>([]); // Store fetched todos
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null); // Error message type
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [todosPerPage, setTodosPerPage] = useState<number>(10);
+  const [updatedStatus, setUpdatedStatus] = useState<boolean>(false); // Change to boolean
 
   // Load todos from local storage on initial render
   useEffect(() => {
     let isMounted = true;
-    isMounted;
     const savedTodos = localStorage.getItem("todos");
     if (savedTodos) {
       setTodos(JSON.parse(savedTodos));
@@ -28,7 +35,6 @@ function App() {
 
     return () => {
       // Cleanup function to cancel updates if the component unmounts
-      console.log("Cleanup: Component unmounted or dependency changed");
       isMounted = false;
     };
   }, []);
@@ -49,33 +55,29 @@ function App() {
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
-      const data = await response.json();
-      {
-        setTodos(data);
-        setLoading(false);
-        console.log(data);
-        console.log(data.length);
-      }
-    } catch (error) {
-      {
-        setError(error.message);
-        setLoading(false);
-      }
+      const data: Todo[] = await response.json();
+      setTodos(data);
+      setLoading(false);
+    } catch (error: any) {
+      setError(error.message || "An unknown error occurred");
+      setLoading(false);
     }
   };
 
-  if (loading)
+  if (loading) {
     return (
       <div>
         <ClipLoader color="#00bcd4" loading={loading} size={150} />
       </div>
     );
+  }
 
-  if (error) return <p>Error: {error}</p>;
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <>
-      {/* <Navigation /> */}
       <Routes>
         <Route
           path="/"
@@ -93,8 +95,8 @@ function App() {
               setCurrentPage={setCurrentPage}
               todosPerPage={todosPerPage}
               setTodosPerPage={setTodosPerPage}
-              updatedStatus={updatedStatus}
-              setUpdatedStatus={setUpdatedStatus}
+              updatedStatus={updatedStatus} // Passing the boolean state
+              setUpdatedStatus={setUpdatedStatus} // State updater function
             />
           }
         />
