@@ -1,17 +1,51 @@
+
 import { Link, useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
 import "../assets/styles/About.css";
 
+// Define the Todo interface
+interface Todo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+// Define prop types for About component
+interface AboutProps {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  error: string | null;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  todosPerPage: number;
+  setTodosPerPage: React.Dispatch<React.SetStateAction<number>>;
+  updatedStatus: boolean;
+  setUpdatedStatus: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 function About({
+  page,
+  setPage,
   todos,
+  setTodos,
   loading,
+  setLoading,
   error,
+  setError,
   currentPage,
   setCurrentPage,
   todosPerPage,
-}) {
+  setTodosPerPage,
+  updatedStatus,
+  setUpdatedStatus,
+}: AboutProps) {
   const { state } = useLocation();
-  const todo = state ? state.todo : null;
+  const todo: Todo | null = state?.todo ?? null;
 
   const totalTodos = todos.length;
   const totalPages = Math.ceil(totalTodos / todosPerPage);
@@ -19,11 +53,9 @@ function About({
   const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
   const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
 
-  // Generate Pagination Numbers
   const getPaginationNumbers = () => {
-    const pagination = [];
+    const pagination: (number | string)[] = [];
 
-    // Function to render first page.
     if (currentPage > 2) {
       pagination.push(1);
       if (currentPage > 3) {
@@ -31,7 +63,6 @@ function About({
       }
     }
 
-    // Add the current page with it's neighbors
     const startPage = Math.max(1, currentPage - 1);
     const endPage = Math.min(totalPages, currentPage + 1);
 
@@ -39,7 +70,6 @@ function About({
       pagination.push(i);
     }
 
-    // Render last page
     if (currentPage < totalPages - 1) {
       if (currentPage < totalPages - 2) {
         pagination.push("...");
@@ -55,7 +85,6 @@ function About({
   return (
     <div className="about">
       {todo ? (
-        // Render the Todo Details..
         <>
           <h1>Todo Details</h1>
           <div className="inner-about">
@@ -68,7 +97,6 @@ function About({
           </Link>
         </>
       ) : (
-        // Display Paginated Todos
         <>
           {loading && <div className="loader">Loading...</div>}
           {error && <div className="error">Error: {error}</div>}
@@ -85,7 +113,6 @@ function About({
                 ))}
               </ul>
 
-              {/* Pagination Controls */}
               <div className="pagination">
                 <button
                   onClick={() => setCurrentPage(1)}
@@ -102,7 +129,7 @@ function About({
                   ) : (
                     <button
                       key={index}
-                      onClick={() => setCurrentPage(number)}
+                      onClick={() => setCurrentPage(number as number)}
                       className={currentPage === number ? "active" : ""}
                     >
                       {number}
@@ -127,13 +154,3 @@ function About({
 }
 
 export default About;
-
-// Defining Prop Types and Requirements..
-About.propTypes = {
-  todos: PropTypes.any,
-  loading: PropTypes.any,
-  error: PropTypes.any,
-  currentPage: PropTypes.any,
-  setCurrentPage: PropTypes.any,
-  todosPerPage: PropTypes.any,
-};
